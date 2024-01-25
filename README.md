@@ -17,14 +17,14 @@ Boite de vitesses
 Responsabilité civile
 ***Prix : 2000 dh par an***
     
-#### Offre  ("basic") :
+#### Offre  ("Standard") :
 
 Responsabilité civile<br>
 Vol <br>
 Dommage collision <br>
 ***Prix : 4000 dh par an***
 
-#### Offre  ("Standard") :
+#### Offre  ("Premuim") :
 
 Responsabilité civile<br>
 Vol<br>
@@ -36,7 +36,7 @@ Bagages et effets personnels<br>
 Protection du conducteur<br>
 ***Prix : 8000 dh par an***
 
-#### Offre ("Premuim") :
+#### Offre ("Luxe") :
 
 Toutes les caractéristiques disponibles <br>
 ***Prix : 10000 dh par an***
