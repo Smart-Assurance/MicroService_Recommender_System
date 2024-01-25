@@ -12,11 +12,11 @@ print("Will generate Features (informations of user and his car) after 10 second
 
 for i in range(1, FEATURES_LIMIT):
     data = {	
-        "user_id": i,
+        "id_client": i,
         "age": 30,
         "car_id":i,
-        "marque": "dacia",
-        "model": "burger",
+        "marque": "bmw",
+        "model": "Serie",
         "Puissance fiscale":12,
         "Carburant":"Diesel",
         "Année":2017,
