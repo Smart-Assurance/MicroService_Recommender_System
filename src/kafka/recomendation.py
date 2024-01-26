@@ -26,7 +26,7 @@ label_encoder_BV = joblib.load(label_encoder_BV_path)
 
 label_encoder_assurance_path = '../../model/label_encoder_assurance.joblib'
 label_encoder_assurance = joblib.load(label_encoder_assurance_path)
-# print(label_encoder_assurance.classes_)
+print(label_encoder_assurance.classes_)
 
 # Load the Standard Scaler
 scaler_path = '../../model/scaler.joblib'
@@ -36,6 +36,12 @@ scaler = joblib.load(scaler_path)
 recommendation_model_path = '../../model/recommendation_model.pkl'
 recommendation_model = joblib.load(recommendation_model_path)
 
+Contrat={'Jeune':'65b2f157e01830262b450f51',
+         'Obligatoire':'65b2f1a0e01830262b450f55',
+         'Premium':'65b2f18be01830262b450f53',
+         'Standard':'65b2f198e01830262b450f54',
+         'luxe':'65b2f17be01830262b450f52'
+         }
 
 FEATURES_KAFKA_TOPIC = "Features"
 RECOMMANDATION_KAFKA_TOPIC = "recomendation"
@@ -75,11 +81,13 @@ while True:
 
         recommendation = recommendation_model.predict(new_data_scaled).tolist()
 
-        # recommendation_class=label_encoder_assurance.inverse_transform(recommendation[0])
-        # print("Predicted 'assurance' class:", recommendation_class)
+        recommendation_class = label_encoder_assurance.inverse_transform([int(label) for label in recommendation])
+
+        recommendation_ids = [Contrat[label] for label in recommendation_class]
+        print("Predicted 'assurance' class:", recommendation_class)
 
         data = {
-            "id_contract": recommendation,
+            "id_contract": recommendation_ids[0],
             "id_client": consumed_message['id_client']
         }
 

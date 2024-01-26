@@ -30,3 +30,28 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    
+  cassandra-node1:
+    image: bitnami/cassandra:latest
+    ports:
+      - 7000:7000
+      - 9042:9042
+    volumes:
+      - ./cassandra-node1:/bitnami
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+      - CASSANDRA_SEEDS=cassandra-node1,cassandra-node2
+      - CASSANDRA_PASSWORD_SEEDER=yes
+      - CASSANDRA_PASSWORD=cassandra
+
+  cassandra-node2:
+    image: bitnami/cassandra:latest
+    ports:
+      - 7001:7000
+      - 9043:9042
+    volumes:
+      - ./cassandra-node2:/bitnami
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+      - CASSANDRA_SEEDS=cassandra-node1,cassandra-node2
+      - CASSANDRA_PASSWORD=cassandra
