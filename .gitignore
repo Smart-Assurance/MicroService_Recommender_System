@@ -1,3 +1,4 @@
-/env
+env/
 /cmd
 .env
+logs/
